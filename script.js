@@ -1,35 +1,34 @@
-const animeGrid = document.getElementById('animeGrid');
-const searchInput = document.getElementById('searchInput');
+const apiBase = 'https://api.jikan.moe/v4';
+const animeList = document.getElementById('anime-list');
+const searchInput = document.getElementById('search-input');
 
-// API থেকে ডাটা আনা
 async function fetchAnime(query = '') {
-    animeGrid.innerHTML = '<p>Loading...</p>';
-    const url = query 
-        ? `https://api.jikan.moe/v4/anime?q=${query}&limit=12` 
-        : 'https://api.jikan.moe/v4/top/anime?limit=12';
-
-    const res = await fetch(url);
-    const data = await res.json();
-    displayAnimes(data.data);
+    const url = query ? `${apiBase}/anime?q=${query}` : `${apiBase}/top/anime`;
+    const response = await fetch(url);
+    const data = await response.json();
+    displayAnime(data.data);
 }
 
-function displayAnimes(animes) {
-    animeGrid.innerHTML = '';
+function displayAnime(animes) {
+    animeList.innerHTML = '';
     animes.forEach(anime => {
         const card = document.createElement('div');
-        card.className = 'card';
+        card.classList.add('anime-card');
+        
+        // ট্রেলার লিঙ্ক চেক করা
+        const trailerUrl = anime.trailer.embed_url;
+        
         card.innerHTML = `
             <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
-            <h4>${anime.title}</h4>
-            <small style="color: #FF6400">Score: ${anime.score || 'N/A'}</small>
+            <h3>${anime.title}</h3>
+            ${trailerUrl ? `<button onclick="window.open('${trailerUrl}', '_blank')">Watch Trailer</button>` : '<p>No Trailer Available</p>'}
         `;
-        animeGrid.appendChild(card);
+        animeList.appendChild(card);
     });
 }
 
-function searchAnime() {
-    fetchAnime(searchInput.value);
-}
+searchInput.addEventListener('input', (e) => {
+    fetchAnime(e.target.value);
+});
 
-// শুরুতে টপ এনিমি লোড করা
 fetchAnime();
