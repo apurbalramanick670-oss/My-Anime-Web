@@ -1,73 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #ff4757;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 25px;
+    border: none;
+    background: #1e1e1e;
+    color: white;
+    outline: none;
+    font-size: 16px;
+}
+
+#anime-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.anime-card {
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ছবি ঝাপসা হওয়া রোধ করতে এই অংশটি জরুরি */
+.anime-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover; /* ছবি যেন চ্যাপ্টা না হয় */
+    image-rendering: auto; /* শার্পনেস ঠিক রাখে */
+    display: block;
+}
+
+.anime-info {
+    padding: 12px;
+    text-align: center;
+}
+
+.anime-info h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    height: 40px;
+    overflow: hidden;
+    color: #eee;
+}
+
 .play-btn {
     background-color: #ff4757;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 10px;
-}
-
-.play-btn:hover {
-    background-color: #ff6b81;
-}
-body {
-    background-color: #0b0b0b;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: #141414;
-    position: sticky;
-    top: 0;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.search-section input {
-    padding: 8px;
-    border-radius: 4px;
-    border: none;
-}
-
-.genre-bar {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    background: #141414;
-    overflow-x: auto;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 25px;
-    padding: 20px 5%;
-}
-
-.card {
-    background: #1c1c1c;
-    padding: 10px;
-    borderRadius: 10px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.card img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 5px;
+    font-size: 13px;
 }
+
