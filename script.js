@@ -4,9 +4,13 @@ const searchInput = document.getElementById('search-input');
 
 async function fetchAnime(query = '') {
     const url = query ? `${apiBase}/anime?q=${query}` : `${apiBase}/top/anime`;
-    const response = await fetch(url);
-    const data = await response.json();
-    displayAnime(data.data);
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        displayAnime(data.data);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
 }
 
 function displayAnime(animes) {
@@ -15,16 +19,28 @@ function displayAnime(animes) {
         const card = document.createElement('div');
         card.classList.add('anime-card');
         
-        // ট্রেলার লিঙ্ক চেক করা
-        const trailerUrl = anime.trailer.embed_url;
+        // ট্রেলার বা ভিডিও লিঙ্ক চেক করা
+        const videoUrl = anime.trailer.embed_url;
         
         card.innerHTML = `
             <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
-            <h3>${anime.title}</h3>
-            ${trailerUrl ? `<button onclick="window.open('${trailerUrl}', '_blank')">Watch Trailer</button>` : '<p>No Trailer Available</p>'}
+            <div class="anime-info">
+                <h3>${anime.title}</h3>
+                <p>Score: ${anime.score || 'N/A'}</p>
+                ${videoUrl ? 
+                    `<button class="play-btn" onclick="playVideo('${videoUrl}')">▶ Watch Now</button>` : 
+                    `<button class="play-btn" disabled style="background: gray;">No Video</button>`
+                }
+            </div>
         `;
         animeList.appendChild(card);
     });
+}
+
+// ভিডিও প্লে করার জন্য ফাংশন
+function playVideo(url) {
+    // এটি ইউজারকে সরাসরি ভিডিও প্লেয়ারে নিয়ে যাবে
+    window.open(url, '_blank');
 }
 
 searchInput.addEventListener('input', (e) => {
@@ -32,3 +48,4 @@ searchInput.addEventListener('input', (e) => {
 });
 
 fetchAnime();
+
