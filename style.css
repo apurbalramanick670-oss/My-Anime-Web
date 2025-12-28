@@ -1,3 +1,17 @@
+.play-btn {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.play-btn:hover {
+    background-color: #ff6b81;
+}
 body {
     background-color: #0b0b0b;
     color: white;
