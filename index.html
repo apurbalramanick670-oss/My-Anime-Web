@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Stream - Your Favorite Anime</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="root">
+        <header>
+            <nav class="nav">
+                <div class="logo">ANIME<span style="color: #FF6400">STREAM</span></div>
+                <div class="search-section">
+                    <input type="text" id="searchInput" placeholder="Search anime...">
+                    <button onclick="searchAnime()">Search</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div id="genreBar" class="genre-bar">
+                </div>
+            <div class="container">
+                <h3 id="listTitle">Trending Now</h3>
+                <div id="animeGrid" class="grid">
+                    </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
