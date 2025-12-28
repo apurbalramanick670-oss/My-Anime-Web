@@ -1,91 +1,39 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: #050505; color: #ffffff; line-height: 1.6; }
 
-body {
-    background-color: #0f0f0f;
-    color: #ffffff;
-    padding: 20px;
-}
+header { padding: 40px 20px; text-align: center; background: linear-gradient(to bottom, #111, #050505); }
+h1 { font-size: 35px; letter-spacing: 3px; font-weight: 900; }
+h1 span { color: #ff4757; text-shadow: 0 0 10px rgba(255, 71, 87, 0.5); }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h1 {
-    color: #ff4757;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
+.search-box { margin-top: 25px; }
 #search-input {
-    width: 100%;
-    max-width: 500px;
-    padding: 12px 20px;
-    margin-top: 20px;
-    border-radius: 25px;
-    border: none;
-    background: #1e1e1e;
-    color: white;
-    outline: none;
-    font-size: 16px;
+    width: 90%; max-width: 500px; padding: 15px 25px;
+    border-radius: 30px; border: 2px solid #222;
+    background: #111; color: white; font-size: 16px; outline: none;
 }
+#search-input:focus { border-color: #ff4757; }
 
-#anime-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 20px;
-    padding: 10px;
+.category-section { padding: 20px; max-width: 1200px; margin: 0 auto; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+h2 { font-size: 20px; border-left: 4px solid #ff4757; padding-left: 10px; }
+
+.anime-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
+
+.anime-card { background: #121212; border-radius: 12px; overflow: hidden; cursor: pointer; transition: 0.4s; border: 1px solid #222; }
+.anime-card:hover { transform: translateY(-8px); border-color: #ff4757; }
+.anime-card img { width: 100%; height: 230px; object-fit: cover; }
+.anime-card h3 { font-size: 13px; padding: 10px; text-align: center; height: 50px; overflow: hidden; }
+
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; }
+.modal-content { position: relative; width: 95%; max-width: 850px; margin: 50px auto; }
+.player-container { position: relative; padding-bottom: 56.25%; height: 0; background: #000; border-radius: 10px 10px 0 0; overflow: hidden; }
+.player-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.close-btn { position: absolute; top: -40px; right: 0; color: white; font-size: 35px; cursor: pointer; }
+
+.video-controls-info {
+    background: #1a1a1a; padding: 15px; border-radius: 0 0 10px 10px;
+    display: flex; justify-content: space-around; font-size: 13px;
+    color: #00ffcc; border-top: 1px solid #333;
 }
-
-.anime-card {
-    background: #1e1e1e;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    border: 1px solid #333;
-}
-
-.anime-card:hover {
-    transform: translateY(-5px);
-}
-
-/* ছবি ঝাপসা হওয়া রোধ করতে এই অংশটি জরুরি */
-.anime-card img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover; /* ছবি যেন চ্যাপ্টা না হয় */
-    image-rendering: auto; /* শার্পনেস ঠিক রাখে */
-    display: block;
-}
-
-.anime-info {
-    padding: 12px;
-    text-align: center;
-}
-
-.anime-info h3 {
-    font-size: 14px;
-    margin-bottom: 10px;
-    height: 40px;
-    overflow: hidden;
-    color: #eee;
-}
-
-.play-btn {
-    background-color: #ff4757;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    font-size: 13px;
-}
-
+#clear-history { background: transparent; border: 1px solid #444; color: #888; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+                
